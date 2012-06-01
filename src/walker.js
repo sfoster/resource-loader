@@ -362,8 +362,8 @@ define(['./vendor/json/date'], function(date){
     _useRefs: false,
     serializeFunctions: false
   };
-  ref.parse = function(str){
-    return ref.resolveJson( JSON.parse(str) );
+  ref.parse = function(str, args){
+    return ref.fromJson( str, args );
   };
   return ref;
 });
