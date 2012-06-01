@@ -40,6 +40,35 @@ define(['walker', 'type', 'text!test/data/basicDataTypes.json'], function(walker
       expect( type(doc.arrayofprimitives[1]) ).toBe('number');
       
     });
+    
+    it("applies given schemas", function(){
+      var testStr = '{id:"/dog/1",eats:{$ref:"/cat/2"},aTime:"2008-11-07T20:26:17-07:00"}';
+
+      var Dog = function(){}; 
+      Dog.prototype = {
+        barks:true
+      };
+      Dog.properties = { 
+        aTime: {format:'date-time'}
+      };
+
+      var Cat = function(){}; 
+      Cat.prototype.meows = true;
+      
+      var schemas = {
+        "/dog/": Dog,
+        "/cat/":Cat
+      };
+
+      var testObj = walker.parse(testStr,{
+        schemas:schemas
+      });
+
+      expect(testObj.barks).toBeTruthy();
+      expect( type(testObj.aTime) ).toBe('date');
+      expect(testObj.eats.meows).toBeTruthy();
+      expect(testObj.eats instanceof Cat).toBeTruthy();
+    });
 
   });
   
