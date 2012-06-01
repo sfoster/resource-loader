@@ -13,6 +13,9 @@ define(function(undef){
     'array': function(thing){
       return is.object(thing) && thing instanceof Array;
     },
+    'date': function(thing){
+      return is.object(thing) && thing instanceof Date;
+    },
     'function': function(thing){
       return 'function' == typeof thing;
     },
