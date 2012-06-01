@@ -1,0 +1,10 @@
+{
+  "emptyarray": [],
+  "emptyobject": {},
+  "emptystring": "",
+  "emptynumber": 0,
+  "anull": null,
+  "arrayofarrays": [[],[],[]],
+  "arrayofobjects": [{},{},{}],
+  "arrayofprimitives": ["str", 0, -18]
+}
